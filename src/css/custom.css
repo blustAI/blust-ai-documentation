@@ -1,0 +1,53 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary:rgb(177, 173, 118)  ;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Target light mode specifically */
+[data-theme='light'] .navbar,
+[data-theme='light'] .navbar-sidebar__brand {
+  background-color: #383190; 
+}
+
+[data-theme='light'] .navbar button  svg,
+[data-theme='light'] .navbar-sidebar__brand button  svg{
+  color: #fff;
+}
+
+/* If you also want to change the text color for better contrast */
+[data-theme='light'] .navbar__link, 
+[data-theme='light'] .navbar__title {
+  color: #ffffff; /* Example: white text color */
+}
+
+
+[data-theme='light'] .hero--primary {
+  background-color: #DADDFC;
+  --ifm-hero-text-color: var(--ifm-hero-text-color);
+}

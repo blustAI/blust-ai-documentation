@@ -1,0 +1,8 @@
+{
+  "label": "Integrating an existing AI Tool",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description":"Welcome to the blust.AI Studio integration guide. This document outlines the process for integrating existing AI tools with blust.AI Studio using the OAuth 2.0 protocol. Integrating your tool allows you to authenticate users through blust.AI, enabling service billing directly in blust.AI credits and receiving monthly compensation based on credit usage."
+  }
+}

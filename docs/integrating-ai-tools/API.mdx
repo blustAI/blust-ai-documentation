@@ -1,0 +1,190 @@
+---
+sidebar_position: 6
+---
+
+
+# API
+
+This document outlines the core principles for integrating external AI tools with the blust.AI platform. The integration process begins by [registering your AI tool](/docs/integrating-ai-tools/index.md) in the blust.AI tool catalog. Once registered, users can access your tool by clicking a link that embeds the user's authorization_code directly in the URL. Use this authorization code to request an access token for the user, which then allows you to retrieve the user's basic profile information and report usage metrics back to blust.AI.
+
+
+
+### Obtaining an AccessToken
+
+After a user is redirected to your AI tool with an `authorization_code`, you must exchange this code for an AccessToken. This process is initiated by making a POST request to our token endpoint.
+
+
+```jsx
+https://oauth.blust.ai/v2/token
+```
+**Method**: `POST`  
+**Content-Type**: `application/x-www-form-urlencoded` 
+
+**Request body**:  
+`code` <sub><sup>string</sup></sub> <sub><sup style={{color: 'red'}}>Required</sup></sub>  
+The authorization code received. 
+
+`client_id` <sub><sup>string</sup></sub> <sub><sup style={{color: 'red'}}>Required</sup></sub>  
+Your application's client ID. 
+
+`client_secret` <sub><sup>string</sup></sub> <sub><sup style={{color: 'red'}}>Required</sup></sub>  
+Your application's client secret. 
+
+`grant_type`:  <sub><sup>string</sup></sub> <sub><sup style={{color: 'red'}}>Required</sup></sub>  
+Must be set to _"authorization_code"_. 
+
+`redirect_uri`: <sub><sup>string</sup></sub> <sub><sup style={{color: 'red'}}>Required</sup></sub>  
+The URI where users are redirected after authentication.
+
+**Response**:  
+The API method returns a JSON object with the following properties:  
+`accessToken` <sub><sup>string</sup></sub>  
+A token that can be used to authenticate subsequent API requests. This token should be provided in the Authorization header as a Bearer token for authenticated requests.  
+`accessTokenExpiresAt` <sub><sup>string with ISO 8601 datetime</sup></sub>  
+The expiration datetime of the `accessToken`. After this datetime, the `accessToken` will no longer be valid for authentication, and a new token must be obtained.  
+`refreshToken` <sub><sup>string</sup></sub>  
+A token that can be used to obtain a new `accessToken` once the current `accessToken` expires. The `refreshToken` is used to securely request new access tokens without requiring the user to re-authenticate.  
+`refreshTokenExpiresAt` <sub><sup>string with ISO 8601 datetime</sup></sub>  
+The expiration date and time of the `refreshToken`. After this datetime, the `refreshToken` will no longer be valid, and the user may need to authenticate again to obtain a new set of tokens.
+
+### Refreshing the AccessToken
+
+AccessTokens have a limited lifetime. Use the `refreshToken` to obtain a new AccessToken without requiring the user to authenticate again.
+
+```jsx
+https://oauth.blust.ai/v2/token
+```
+**Method**: `POST`  
+**Content-Type**: `application/x-www-form-urlencoded` 
+
+**Request body**:  
+`refresh_token` <sub><sup>string</sup></sub> <sub><sup style={{color: 'red'}}>Required</sup></sub>  
+The refresh token previously received.
+
+`client_id` <sub><sup>string</sup></sub> <sub><sup style={{color: 'red'}}>Required</sup></sub>  
+Your application's client ID. 
+
+`client_secret` <sub><sup>string</sup></sub> <sub><sup style={{color: 'red'}}>Required</sup></sub>  
+Your application's client secret. 
+
+`grant_type`:  <sub><sup>string</sup></sub> <sub><sup style={{color: 'red'}}>Required</sup></sub>  
+Must be set to _"refresh_token"_. 
+
+`redirect_uri`: <sub><sup>string</sup></sub> <sub><sup style={{color: 'red'}}>Required</sup></sub>  
+The URI where users are redirected after authentication.
+
+**Response**:  
+The API method returns a JSON object with the following properties:  
+`accessToken` <sub><sup>string</sup></sub>  
+A token that can be used to authenticate subsequent API requests. This token should be provided in the Authorization header as a Bearer token for authenticated requests.  
+`accessTokenExpiresAt` <sub><sup>string with ISO 8601 datetime</sup></sub>  
+The expiration datetime of the `accessToken`. After this datetime, the `accessToken` will no longer be valid for authentication, and a new token must be obtained.  
+`refreshToken` <sub><sup>string</sup></sub>  
+A token that can be used to obtain a new `accessToken` once the current `accessToken` expires. The `refreshToken` is used to securely request new access tokens without requiring the user to re-authenticate.  
+`refreshTokenExpiresAt` <sub><sup>string with ISO 8601 datetime</sup></sub>  
+The expiration date and time of the `refreshToken`. After this datetime, the `refreshToken` will no longer be valid, and the user may need to authenticate again to obtain a new set of tokens.
+
+
+
+## Using the AccessToken
+
+With the AccessToken, your application can access blust.AI APIs on behalf of the authenticated user.
+
+### Fetching User Information
+
+```jsx
+https://oauth.blust.ai/v2/user
+```
+**Method**: `GET`  
+**Header**: `Authorization: Bearer {ACCESS_TOKEN}`
+
+**Response**:  
+The API method returns a JSON object with the following properties:
+
+`id` <sub><sup>string</sup></sub>  
+Unique identifier for the user.  
+`name` <sub><sup>string</sup></sub> <sub><sup style={{color: 'red'}}>Optional</sup></sub>  
+The user's name.  
+`email` <sub><sup>string</sup></sub> <sub><sup style={{color: 'red'}}>Optional</sup></sub>  
+The user's email address.  
+`premium_access` <sub><sup>boolean</sup></sub>  
+Indicates whether the user has a premium subscription (`true`) or is using a free plan (`false`).  
+`limit` <sub><sup>number</sup></sub>  
+The amount of credits available for the user to spend on the current AI Tool.
+
+### Reporting Usage
+
+```jsx
+https://oauth.blust.ai/v2/user/usage
+```
+**Method**: `POST`  
+**Header**: `Authorization: Bearer {ACCESS_TOKEN}`
+
+**Request body**:  
+`amount` <sub><sup>string</sup></sub> <sub><sup style={{color: 'red'}}>Required</sup></sub>  
+The number of credits to charge the user.
+
+**Response**:  
+The API method returns a JSON object with the following properties:
+`charged` <sub><sup>number</sup></sub>  
+Charged amount.
+`limit` <sub><sup>number</sup></sub>  
+The updated amount of credits available.
+
+:::warning
+It is the responsibility of the AI tool owner to verify that a user has sufficient credits and the appropriate subscription level (if applicable) before attempting to perform a chargeable action. It is strongly recommended to check the `limit` field each time before allowing a user to proceed with an action that would incur a charge.
+:::
+
+:::tip
+If a transaction cannot be completed due to insufficient credits, it is recommended to inform the user and suggest an option to increase their credit limit for your AI tool. This approach helps prevent user frustration and supports a clearer understanding of available options.
+:::
+
+
+### Usage history
+
+```jsx
+https://oauth.blust.ai/v2/user/usage
+```
+**Method**: `GET`  
+**Header**: `Authorization: Bearer {ACCESS_TOKEN}`
+
+**Request parameters**:  
+`limit` <sub><sup>string</sup></sub> <sub><sup style={{color: 'grey'}}>Optional</sup></sub>  
+Maximum number of records to return, for pagination.  
+`skip` <sub><sup>string</sup></sub> <sub><sup style={{color: 'grey'}}>Optional</sup></sub>  
+Number of records to skip from the start, for pagination.  
+
+**Response**:  
+The API method returns an array of JSON objects with the following properties:
+`id` <sub><sup>string</sup></sub>  
+Unique identifier for each transaction.
+`date` <sub><sup>string with ISO 8601 datetime</sup></sub>  
+Date and time of transaction in ISO 8601 format.  
+`amount` <sub><sup>number</sup></sub>  
+Transaction amount
+
+
+## Handling Errors 
+In case of an error, the response will be a JSON object containing the following fields:  
+`status` <sub><sup>number</sup></sub>  
+The HTTP status code associated with the error. This numeric value represents the type of error encountered, providing a quick indicator of the error's nature.  
+`error` <sub><sup>string</sup></sub>  
+A short, human-readable identifier for the error, often a single word or a short phrase that summarizes the error condition succinctly.  
+`message` <sub><sup>string</sup></sub>  
+A more detailed, human-readable explanation of the error. It is intended to provide developers with additional information to help diagnose and correct the issue.  
+
+### Common Errors
+`400 InvalidUsage`: The charged amount is invalid. Ensure the amount is a positive number and does not exceed the user's available credit limit.
+
+`401 unauthorized_request`: Unauthorized request: no authentication given
+
+`401 invalid_token`: Invalid token: access token is invalid
+
+`403 CannotChargeFreeTool`: Cannot charge: The AI tool is marked as free for users. Check the tool's billing settings if attempting to charge users.
+
+`403 PremiumSubscriptionRequired`: Cannot charge: AI tool requires a premium subscription. This error occurs when attempting to charge a user who is on a free plan, but the AI tool is configured as "Premium."
+
+`402 NotEnoughCredits`: Not enough credits available to complete the transaction. This may not necessarily mean the user has no credits at all; it could indicate that the user's limit for your AI tool has been reached.
+
+
+
