@@ -13,14 +13,14 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://blust.ai',
+  url: `https://docs.blust.ai`,
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'Blust.AI', // Usually your GitHub org/user name.
+  organizationName: 'blustAI', // Usually your GitHub org/user name.
   projectName: 'blust-ai-documentation', // Usually your repo name.
 
   onBrokenLinks: 'throw',
@@ -43,8 +43,8 @@ const config = {
           sidebarPath: './sidebars.js',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          //editUrl:
-          //  'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl:
+            'https://github.com/blustAI/blust-ai-documentation/tree/main',
           exclude: [
                     'creating-ai-tools/image_recognition.md', //TODO 
                     'creating-ai-tools/capabilities.md', //TODO 

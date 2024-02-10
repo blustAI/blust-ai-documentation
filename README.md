@@ -5,7 +5,7 @@ Welcome to the official blust.AI documentation repository.
 
 Explore our documentation to make the most out of blust.AI: [blust.AI Documentation](https://docs.blust.ai)
 
-##№ Contribute
+### Contribute  
 Noticed an error or have suggestions for improvements? Feel free to contribute to our documentation. Your input helps make blust.AI better for everyone.
 
 ---
