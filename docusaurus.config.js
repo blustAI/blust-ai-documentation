@@ -47,8 +47,6 @@ const config = {
             'https://github.com/blustAI/blust-ai-documentation/tree/main',
           exclude: [
                     'creating-ai-tools/image_recognition.md', //TODO 
-                    'creating-ai-tools/capabilities.md', //TODO 
-                    'creating-ai-tools/integrations.md', //TODO 
                     'creating-ai-tools/voice_settings.md'
                     ],
         },
