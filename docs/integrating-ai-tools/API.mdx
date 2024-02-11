@@ -5,13 +5,13 @@ sidebar_position: 6
 
 # API
 
-This document outlines the core principles for integrating external AI tools with the blust.AI platform. The integration process begins by [registering your AI tool](/docs/integrating-ai-tools/index.md) in the blust.AI tool catalog. Once registered, users can access your tool by clicking a link that embeds the user's authorization_code directly in the URL. Use this authorization code to request an access token for the user, which then allows you to retrieve the user's basic profile information and report usage metrics back to blust.AI.
+This document outlines the core principles for integrating external AI tools with the blust.AI platform. The integration process begins by [registering your AI tool](/docs/integrating-ai-tools/index.md) in the blust.AI tool catalog. Once registered, users can access your tool by clicking a link that embeds the user's _authorization_code_ directly in the URL. Use this authorization code to request an access token for the user, which then allows you to retrieve the user's basic profile information and report usage metrics back to blust.AI.
 
 
 
-### Obtaining an AccessToken
+### Obtaining an accessToken
 
-After a user is redirected to your AI tool with an `authorization_code`, you must exchange this code for an AccessToken. This process is initiated by making a POST request to our token endpoint.
+After a user is redirected to your AI tool with an `authorization_code`, you must exchange this code for an `accessToken`. This process is initiated by making a POST request to our token endpoint.
 
 
 ```jsx
@@ -38,6 +38,7 @@ The URI where users are redirected after authentication.
 
 **Response**:  
 The API method returns a JSON object with the following properties:  
+
 `accessToken` <sub><sup>string</sup></sub>  
 A token that can be used to authenticate subsequent API requests. This token should be provided in the Authorization header as a Bearer token for authenticated requests.  
 `accessTokenExpiresAt` <sub><sup>string with ISO 8601 datetime</sup></sub>  
@@ -49,7 +50,7 @@ The expiration date and time of the `refreshToken`. After this datetime, the `re
 
 ### Refreshing the AccessToken
 
-AccessTokens have a limited lifetime. Use the `refreshToken` to obtain a new AccessToken without requiring the user to authenticate again.
+AccessTokens have a limited lifetime. Use the `refreshToken` to obtain a new `accessToken` without requiring the user to authenticate again.
 
 ```jsx
 https://oauth.blust.ai/v2/token

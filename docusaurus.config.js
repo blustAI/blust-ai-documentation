@@ -44,11 +44,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/blustAI/blust-ai-documentation/tree/main',
-          exclude: [
-                    'creating-ai-tools/image_recognition.md', //TODO 
-                    'creating-ai-tools/voice_settings.md'
-                    ],
+            'https://github.com/blustAI/blust-ai-documentation/tree/main'
         },
         blog: {
           showReadingTime: true,

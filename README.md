@@ -1,9 +1,9 @@
 # Welcome to blust.AI Documentation
 
-Welcome to the official blust.AI documentation repository. 
+Welcome to the official Blust AI studio documentation repository. 
 
 
-Explore our documentation to make the most out of blust.AI: [blust.AI Documentation](https://docs.blust.ai)
+Explore our documentation to make the most out of Blust AI: [blust.AI Documentation](https://docs.blust.ai)
 
 ### Contribute  
 Noticed an error or have suggestions for improvements? Feel free to contribute to our documentation. Your input helps make blust.AI better for everyone.

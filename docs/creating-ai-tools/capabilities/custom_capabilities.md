@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Custom capabilities
 
-In addition to utilizing existing additional capabilities, you have the option to create your own custom additional capabilities. This process is similar to what many AI providers refer to as function calling, but with unique specific features. Currently, Blust AI supports two types of additional capabilities:
+In addition to utilizing existing additional capabilities, you have the option to create your own custom additional capabilities. This process is similar to what many AI providers refer to as _function calling_, but with unique specific features. Currently, Blust AI supports two types of additional capabilities:
 
 1. **API Calling**: Invoking an external API.  
 2. **Model Calling**: Invoking another AI model.
