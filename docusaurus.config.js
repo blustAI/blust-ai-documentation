@@ -66,10 +66,10 @@ const config = {
       // Replace with your project's social card
       image: 'img/blustai-social-card.jpg',
       navbar: {
-        title: '',
+        title: 'Blust.AI',
         logo: {
-          alt: 'Blust AI',
-          src: 'img/logo_color_light.png',
+          alt: '',
+          src: 'img/Iconwidgets.png',
         },
         items: [
           {
@@ -135,6 +135,11 @@ const config = {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
       },
+      algolia: {
+        appId: 'PCDTKJC7RO',
+        apiKey: '0a170aff6b927ca9ef1db1ba997f56de',
+        indexName: 'blust',
+      }
     }),
 };
 

@@ -29,22 +29,8 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-/* Target light mode specifically */
-[data-theme='light'] .navbar,
-[data-theme='light'] .navbar-sidebar__brand {
-  background-color: #383190; 
-}
 
-[data-theme='light'] .navbar button  svg,
-[data-theme='light'] .navbar-sidebar__brand button  svg{
-  color: #fff;
-}
 
-/* If you also want to change the text color for better contrast */
-[data-theme='light'] .navbar__link, 
-[data-theme='light'] .navbar__title {
-  color: #ffffff; /* Example: white text color */
-}
 
 
 [data-theme='light'] .hero--primary {
