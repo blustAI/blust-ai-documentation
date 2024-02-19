@@ -142,6 +142,7 @@ const config = {
         appId: 'PCDTKJC7RO',
         apiKey: '0a170aff6b927ca9ef1db1ba997f56de',
         indexName: 'blust',
+        contextualSearch: false
       },
     }),
     trailingSlash:true
