@@ -6,7 +6,7 @@ _If left blank_, the tool will default to the standard behavior defined by the m
 
 `AI Model`
 
-**AI Model** selection involves choosing a pre-existing model that will power your AI tool. The choice of AI model dictates the capabilities, limitations, and the cost of requests. Different models consume varying amounts of credits, which can significantly affect the operational cost of your AI tool. It is important to choose a model that not only aligns with the AI Role Definition for optimal performance but also fits within your credit budget. Please refer to the [list of available models](/docs/creating-ai-tools/available_models) for detailed descriptions of each model.
+**AI Model** selection involves choosing a pre-existing model that will power your AI tool. The choice of AI model dictates the capabilities, limitations, and the cost of requests. Different models consume varying amounts of credits, which can significantly affect the operational cost of your AI tool. It is important to choose a model that not only aligns with the AI Role Definition for optimal performance but also fits within your credit budget. Please refer to the [list of available models](/docs/creating-ai-tools/available_models/) for detailed descriptions of each model.
 
 `Strategy`
 

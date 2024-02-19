@@ -27,4 +27,4 @@ Note that the "Catalog Link" differs from the "Direct Link." The first one direc
 :::
 
 
-For information on configuring AI tool's settings, refer to the [Configuration](/docs/creating-ai-tools/configuration) section.
+For information on configuring AI tool's settings, refer to the [Configuration](/docs/creating-ai-tools/configuration/) section.

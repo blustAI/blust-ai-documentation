@@ -56,6 +56,9 @@ const config = {
         theme: {
           customCss: './src/css/custom.css',
         },
+        /*sitemap: {
+          trailingSlash:true,
+        },*/
       }),
     ],
   ],
@@ -139,8 +142,9 @@ const config = {
         appId: 'PCDTKJC7RO',
         apiKey: '0a170aff6b927ca9ef1db1ba997f56de',
         indexName: 'blust',
-      }
+      },
     }),
+    trailingSlash:true
 };
 
 export default config;

@@ -33,5 +33,5 @@ Some additional capabilities offer customizable settings. For instance, the **Ge
 ## Custom Additional Capabilities
 For users with specific requirements, Blust AI Studio offers the ability to create custom additional capabilities.
 
-For detailed instructions on creating custom additional capabilities, refer to the [following section](/docs/creating-ai-tools/capabilities/custom_capabilities)
+For detailed instructions on creating custom additional capabilities, refer to the [following section](/docs/creating-ai-tools/capabilities/custom_capabilities/)
 

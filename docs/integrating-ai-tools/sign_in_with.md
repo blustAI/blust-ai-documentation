@@ -19,9 +19,9 @@ Replace `{YOUR CLIENT ID}` with your actual client ID and `{URL TO REDIRECT USER
 
 #### Requirements
 
-- The `redirect_uri` must be pre-registered and included in your list of allowed redirect URIs. For more information on managing redirect URIs, refer to the [Credentials](/docs/integrating-ai-tools/credentials) section of our documentation.
+- The `redirect_uri` must be pre-registered and included in your list of allowed redirect URIs. For more information on managing redirect URIs, refer to the [Credentials](/docs/integrating-ai-tools/credentials/) section of our documentation.
 
-- Upon redirecting users to this URL, your application will receive an `authorization_code`. You must use this code to request an Access Token, which will then allow your application to access user data and report usage. Detailed instructions for exchanging the `authorization_code` for an `Access Token` can be found in the [API](/docs/integrating-ai-tools/API)  section.
+- Upon redirecting users to this URL, your application will receive an `authorization_code`. You must use this code to request an Access Token, which will then allow your application to access user data and report usage. Detailed instructions for exchanging the `authorization_code` for an `Access Token` can be found in the [API](/docs/integrating-ai-tools/API/) section.
 
 :::note
 Incorporating the **Sign in with blust.AI** button is designed to streamline the authentication process, offering a more integrated and efficient user experience within your application.
